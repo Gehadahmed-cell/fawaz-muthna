@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="pY-gW0orpKi8kiJ3iLzEhuvlS51ApoTtr6m__NqNM04" />
+    
+    <!-- 🔍 أكواد التحقق المباشرة من جوجل (Google Site Verification) -->
     <meta name="google-site-verification" content="pY-gW0orpKi8kiJ3iLzEhuvlS51ApoTtr6m__NqNM04" />
 
     <title>مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات</title>
-    <!-- Tailwind CSS -->
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Cairo) -->
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Font (Cairo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -39,32 +41,20 @@
             }
         }
     </script>
-
     <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            scroll-behavior: smooth;
-        }
+        body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
         .bg-pattern {
-            background-color: #0e2a47;
-            background-image: radial-gradient(#f39c12 0.75px, transparent 0.75px), radial-gradient(#f39c12 0.75px, #0e2a47 0.75px);
+            background-color: #050c18;
+            background-image: radial-gradient(#f39c12 0.75px, transparent 0.75px), radial-gradient(#f39c12 0.75px, #050c18 0.75px);
             background-size: 30px 30px;
             background-position: 0 0, 15px 15px;
-            opacity: 0.98;
-        }
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(14, 42, 71, 0.15), 0 10px 10px -5px rgba(14, 42, 71, 0.04);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-500 selection:text-white">
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-amber-500 selection:text-white">
 
-    <!-- Top Info Bar -->
-    <div class="bg-navy-950 text-slate-300 text-sm py-2 px-4 border-b border-slate-800">
+    <!-- 1. TOP ANNOUNCEMENT & CONTACT BAR -->
+    <div class="bg-navy-950 text-slate-300 text-xs sm:text-sm py-2.5 px-4 border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <div class="flex items-center gap-6">
                 <span class="flex items-center gap-2">
@@ -76,12 +66,12 @@
                     السبت - الخميس: 8:00 صباحاً - 6:00 مساءً
                 </span>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 dir-ltr font-mono text-xs">
                 <a href="tel:777181933" class="hover:text-amber-500 transition-colors flex items-center gap-1">
                     <i class="fa-solid fa-phone text-amber-500"></i>
                     <span>777181933</span>
                 </a>
-                <span class="text-slate-600">|</span>
+                <span class="text-slate-700">|</span>
                 <a href="tel:772037226" class="hover:text-amber-500 transition-colors flex items-center gap-1">
                     <i class="fa-solid fa-mobile-screen text-amber-500"></i>
                     <span>772037226</span>
@@ -90,61 +80,59 @@
         </div>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md">
+    <!-- 2. NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-navy-950/90 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-12 h-12 bg-navy-800 rounded-xl flex items-center justify-center text-amber-500 shadow-md group-hover:bg-amber-500 group-hover:text-navy-900 transition-all">
-                        <i class="fa-solid fa-building-user text-2xl"></i>
+                    <div class="w-12 h-12 bg-gradient-to-tr from-amber-600 to-amber-400 rounded-xl flex items-center justify-center text-navy-950 font-black text-2xl shadow-lg shadow-amber-500/20">
+                        ف
                     </div>
                     <div>
-                        <span class="block text-xl font-extrabold text-navy-800 tracking-tight leading-none">مؤسسة فواز مثنى</span>
-                        <span class="block text-xs font-semibold text-amber-600 mt-1">للمقاولات والخدمات اللوجستية</span>
+                        <span class="block text-xl font-extrabold text-white tracking-tight leading-none">مؤسسة فواز مثنى</span>
+                        <span class="block text-xs font-bold text-amber-500 mt-1">للمقاولات والخدمات اللوجستية</span>
                     </div>
                 </a>
 
-                <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-700">
-                    <a href="#home" class="hover:text-amber-600 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">الرئيسية</a>
-                    <a href="#about" class="hover:text-amber-600 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">من نحن</a>
-                    <a href="#services" class="hover:text-amber-600 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">خدماتنا</a>
-                    <a href="#features" class="hover:text-amber-600 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">لماذا نحن</a>
-                    <a href="#contact" class="hover:text-amber-600 transition-colors py-2 border-b-2 border-transparent hover:border-amber-500">تواصل معنا</a>
+                <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-300">
+                    <a href="#home" class="hover:text-amber-500 transition-colors">الرئيسية</a>
+                    <a href="#about" class="hover:text-amber-500 transition-colors">من نحن</a>
+                    <a href="#services" class="hover:text-amber-500 transition-colors">خدماتنا</a>
+                    <a href="#contact" class="hover:text-amber-500 transition-colors">تواصل معنا</a>
                 </nav>
 
                 <div class="hidden lg:flex items-center gap-3">
-                    <a href="https://wa.me/967777181933?text=مرحباً%20مؤسسة%20فواز%20مثنى،%20أود%20الاستفسار%20عن%20خدماتكم" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold px-5 py-2.5 rounded-lg shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+                    <a href="#contact" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-navy-950 font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2 text-sm">
                         <i class="fa-brands fa-whatsapp text-lg"></i>
                         <span>اطلب خدمة الآن</span>
                     </a>
                 </div>
 
-                <button id="mobile-menu-btn" class="md:hidden text-navy-800 text-2xl p-2 focus:outline-none">
+                <button id="mobile-menu-btn" class="md:hidden text-white text-2xl p-2 focus:outline-none">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-navy-900 text-white border-t border-slate-800 px-6 py-6 space-y-4">
-            <a href="#home" class="block py-2 text-amber-500 font-bold border-b border-slate-800">الرئيسية</a>
-            <a href="#about" class="block py-2 hover:text-amber-400 border-b border-slate-800">من نحن</a>
-            <a href="#services" class="block py-2 hover:text-amber-400 border-b border-slate-800">خدماتنا</a>
-            <a href="#features" class="block py-2 hover:text-amber-400 border-b border-slate-800">لماذا نحن</a>
+            <a href="#home" class="block py-2 text-amber-500 font-bold border-b border-slate-800/60">الرئيسية</a>
+            <a href="#about" class="block py-2 hover:text-amber-400 border-b border-slate-800/60">من نحن</a>
+            <a href="#services" class="block py-2 hover:text-amber-400 border-b border-slate-800/60">خدماتنا</a>
             <a href="#contact" class="block py-2 hover:text-amber-400">تواصل معنا</a>
-            <a href="https://wa.me/967777181933" target="_blank" class="w-full mt-4 bg-amber-500 text-navy-950 font-bold py-3 rounded-lg flex items-center justify-center gap-2">
+            <a href="https://wa.me/967777181933" target="_blank" class="w-full mt-4 bg-emerald-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2">
                 <i class="fa-brands fa-whatsapp text-xl"></i>
                 تواصل عبر الواتساب
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative bg-navy-900 text-white py-20 lg:py-28 overflow-hidden">
-        <div class="absolute inset-0 bg-pattern opacity-30"></div>
+    <!-- 3. HERO SECTION -->
+    <section id="home" class="relative bg-navy-900 text-white py-20 lg:py-28 overflow-hidden border-b border-slate-800">
+        <div class="absolute inset-0 bg-pattern opacity-40"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
-                    <div class="inline-flex items-center gap-2 bg-navy-800/80 border border-amber-500/40 text-amber-400 px-4 py-2 rounded-full text-sm font-semibold shadow-inner">
+                    <div class="inline-flex items-center gap-2 bg-navy-800/90 border border-amber-500/40 text-amber-400 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-inner">
                         <i class="fa-solid fa-award"></i>
                         <span>شريكك الموثوق لبناء المستقبل وتسهيل أعمالك</span>
                     </div>
@@ -156,42 +144,42 @@
                         </span>
                     </h1>
 
-                    <p class="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        حلول متكاملة بجودة عالية واحترافية في التنفيذ. نقدم لك خدمات البناء والإشراف الهندسي، النقل اللوجستي والشحن، تأجير السيارات الفارهة، الصيانة والترميم، والخدمات التسويقية في محافظة عدن وجميع المحافظات.
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        حلول متكاملة بجودة عالية واحترافية في التنفيذ. نقدم لك خدمات البناء والإشراف الهندسي، النقل اللوجستي والشحن، تأجير السيارات الفارهة (تويوتا برادو)، الصيانة والترميم في محافظة عدن وجميع المحافظات.
                     </p>
 
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="#services" class="bg-amber-500 hover:bg-amber-600 text-navy-950 font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-amber-500/30 transition-all flex items-center gap-3 text-lg">
+                        <a href="#services" class="bg-amber-500 hover:bg-amber-400 text-navy-950 font-extrabold px-8 py-4 rounded-xl shadow-xl shadow-amber-500/20 transition-all flex items-center gap-3 text-base">
                             <span>استكشف خدماتنا</span>
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
-                        <a href="tel:777181933" class="bg-navy-800 hover:bg-navy-800/80 border border-slate-700 text-white font-bold px-6 py-4 rounded-xl shadow-md transition-all flex items-center gap-3 text-lg">
+                        <a href="tel:777181933" class="bg-navy-800 hover:bg-navy-800/80 border border-slate-700 text-white font-bold px-6 py-4 rounded-xl shadow-md transition-all flex items-center gap-3 text-base">
                             <i class="fa-solid fa-phone-volume text-amber-500"></i>
-                            <span>اتصل بنا الآن</span>
+                            <span>777181933</span>
                         </a>
                     </div>
                 </div>
 
                 <div class="lg:col-span-5 relative">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-gradient-to-br from-navy-800 via-navy-900 to-amber-950 h-80 sm:h-96 flex flex-col justify-between p-6">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-gradient-to-br from-navy-800 via-navy-900 to-slate-950 p-6 space-y-6">
                         <div class="flex justify-between items-start">
-                            <div class="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-3xl backdrop-blur-md border border-amber-500/30">
+                            <div class="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-3xl border border-amber-500/30">
                                 <i class="fa-solid fa-truck-fast"></i>
                             </div>
-                            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full">خدمات متكاملة</span>
+                            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full">جاهزية كاملة</span>
                         </div>
                         <div class="space-y-2">
                             <h3 class="text-2xl font-black text-white">أسطول لوجستي ومقاولات</h3>
-                            <p class="text-slate-300 text-sm">نحن نوفر أعلى مستويات الأمان والسرعة في النقل والتنفيذ في جميع المحافظات.</p>
+                            <p class="text-slate-400 text-xs leading-relaxed">أعلى مستويات الأمان والسرعة في النقل والتنفيذ وتأجير المعدات في عدن وجميع المحافظات.</p>
                         </div>
-                        <div class="bg-navy-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-700/80 w-full">
+                        <div class="bg-slate-950/80 p-4 rounded-xl border border-slate-800 w-full">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 bg-amber-500 text-navy-950 rounded-lg flex items-center justify-center font-bold">
-                                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                                    <i class="fa-solid fa-shield-halved text-lg"></i>
                                 </div>
                                 <div>
                                     <p class="text-white font-bold text-sm">نقل ودعم لوجستي آمن</p>
-                                    <p class="text-slate-400 text-xs">خدمات نقل البضائع والشحن بأعلى كفاءة</p>
+                                    <p class="text-slate-400 text-xs">خدمات الشحن والبناء بأعلى معايير السلامة</p>
                                 </div>
                             </div>
                         </div>
@@ -201,105 +189,144 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <!-- 4. ABOUT SECTION -->
+    <section id="about" class="py-20 bg-slate-950 border-b border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="relative">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gradient-to-br from-navy-800 to-navy-950 p-6 rounded-2xl shadow-md h-64 w-full flex flex-col justify-between border border-slate-700">
-                            <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-2xl">
-                                <i class="fa-solid fa-city"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-bold text-lg">خبرة وإنجاز</h4>
-                                <p class="text-slate-400 text-xs mt-1">مشاريع بناء وإشراف هندسي</p>
-                            </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 h-56 flex flex-col justify-between">
+                        <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-city"></i>
                         </div>
-                        <div class="bg-gradient-to-br from-amber-600 to-amber-800 p-6 rounded-2xl shadow-md h-64 w-full flex flex-col justify-between text-white mt-8 border border-amber-500/30">
-                            <div class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center text-2xl">
-                                <i class="fa-solid fa-car-side"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg">أسطول حديث</h4>
-                                <p class="text-amber-100 text-xs mt-1">تأجير سيارات ونقل لوجستي</p>
-                            </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">خبرة وإنجاز</h4>
+                            <p class="text-slate-400 text-xs mt-1">مشاريع بناء وإشراف هندسي متكامل</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-amber-600 to-amber-700 p-6 rounded-2xl h-56 flex flex-col justify-between text-slate-950 mt-6 shadow-xl">
+                        <div class="w-12 h-12 bg-navy-950/20 text-navy-950 rounded-xl flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-lg">أسطول حديث</h4>
+                            <p class="text-slate-900 text-xs mt-1 font-semibold">سيارات فارهة ونقل ثقيل</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="space-y-6">
-                    <div class="inline-block bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-md text-sm">عن المؤسسة</div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-800 leading-tight">نحن أقرب إليك .. دعنا نبدأ مشروعك القادم معاً!</h2>
-                    <p class="text-slate-600 text-lg leading-relaxed">
-                        تعد <strong class="text-navy-800">مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات</strong> إحدى المؤسسات الوطنية الرائدة المتخصصة في تقديم حزمة متكاملة من الخدمات الهندسية والإنشائية، إلى جانب حلول النقل والخدمات اللوجستية وتأجير السيارات الفارهة.
+                    <div class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold px-3 py-1 rounded-md text-xs">عن المؤسسة</div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">نحن أقرب إليك .. دعنا نبدأ مشروعك القادم معاً!</h2>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        تعد <strong class="text-white">مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات</strong> إحدى المؤسسات الوطنية الرائدة المتخصصة في تقديم حزمة متكاملة من الخدمات الهندسية والإنشائية، إلى جانب حلول النقل والخدمات اللوجستية وتأجير السيارات الفارهة (برادو VIP) في محافظة عدن وباقي المحافظات.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-slate-100">
+    <!-- 5. SERVICES SECTION -->
+    <section id="services" class="py-20 bg-slate-900/40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="bg-navy-800 text-amber-400 font-bold px-4 py-1.5 rounded-full text-sm inline-block">ماذا نقدم لك؟</span>
-                <h2 class="text-3xl sm:text-4xl font-black text-navy-800">حلول متكاملة بجودة عالية واحترافية في التنفيذ</h2>
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-amber-500 font-bold text-xs uppercase tracking-widest">خدماتنا المتميزة</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">حلول متكاملة بجودة عالية واحترافية في التنفيذ</h2>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 p-6 space-y-4">
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-2xl">
+                <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4 hover:border-amber-500/50 transition-all">
+                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-2xl">
                         <i class="fa-solid fa-helmet-safety"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-800">بناء وإنشاء</h3>
-                    <p class="text-slate-600 text-sm">تنفيذ المشاريع الإنشائية وإدارة المواقع بأعلى معايير الجودة والسلامة.</p>
+                    <h3 class="text-xl font-bold text-white">بناء وإنشاء وإشراف هندسي</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">تنفيذ المشاريع الإنشائية وإدارة المواقع والترميم بأعلى معايير الجودة والسلامة.</p>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 p-6 space-y-4">
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-2xl">
+                <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4 hover:border-amber-500/50 transition-all">
+                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-2xl">
                         <i class="fa-solid fa-truck-moving"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-800">الخدمات اللوجستية والنقل</h3>
-                    <p class="text-slate-600 text-sm">أسطول حديث لنقل البضائع والمعدات بأمان تام وفي الوقت المحدد.</p>
+                    <h3 class="text-xl font-bold text-white">الخدمات اللوجستية والنقل</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">أسطول حديث لنقل البضائع والمعدات الشاقة بأمان تام وفي الموعد المحدد بين كافة المحافظات.</p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 p-6 space-y-4">
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center text-2xl">
+                <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4 hover:border-amber-500/50 transition-all">
+                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-2xl">
                         <i class="fa-solid fa-car-side"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-navy-800">تأجير سيارات VIP</h3>
-                    <p class="text-slate-600 text-sm">تأجير سيارات فارهة (تويوتا برادو) لكبار الشخصيات ورجال الأعمال.</p>
+                    <h3 class="text-xl font-bold text-white">تأجير سيارات VIP والمعدات</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">تأجير سيارات فارهة (تويوتا برادو) لكبار الشخصيات ورجال الأعمال، وتوفير المعدات الثقيلة.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 class="text-3xl font-extrabold text-navy-800">تواصل معنا الآن</h2>
-            <p class="text-slate-600">عدن - البريقة - بئر أحمد | هاتف: 777181933 / 772037226</p>
-            <a href="https://wa.me/967777181933" target="_blank" class="inline-flex items-center gap-2 bg-amber-500 text-navy-950 font-bold px-6 py-3 rounded-lg shadow-md hover:bg-amber-600">
-                <i class="fa-brands fa-whatsapp text-xl"></i>
-                <span>محادثة واتساب مباشرة</span>
-            </a>
+    <!-- 6. CONTACT & WHATSAPP FORM SECTION -->
+    <section id="contact" class="py-20 bg-slate-950 border-t border-slate-900">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                <div class="text-center space-y-2 mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">تواصل معنا الآن</h2>
+                    <p class="text-slate-400 text-xs">عدن - البريقة - بئر أحمد | هاتف: 777181933 / 772037226</p>
+                </div>
+
+                <form id="whatsappForm" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">الاسم الكامل</label>
+                        <input type="text" id="name" required placeholder="أدخل اسمك الكريم" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">رقم الهاتف</label>
+                        <input type="tel" id="phone" required placeholder="777XXXXXX" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500 text-right dir-ltr">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">نوع الخدمة المطلوب</label>
+                        <select id="service" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500">
+                            <option value="المقاولات والبناء والإشراف الهندسي">المقاولات والبناء والإشراف الهندسي</option>
+                            <option value="الخدمات اللوجستية والنقل الثقيل">الخدمات اللوجستية والنقل الثقيل</option>
+                            <option value="تأجير سيارات VIP فارهة">تأجير سيارات VIP (تويوتا برادو)</option>
+                            <option value="الصيانة والترميم">الصيانة والترميم</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-300 mb-1">تفاصيل الاستفسار</label>
+                        <textarea id="message" rows="3" placeholder="اكتب تفاصيل الطلب هنا..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 focus:outline-none focus:border-amber-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>إرسال الطلب مباشرة عبر الواتساب</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-navy-950 text-slate-400 py-8 text-center border-t border-slate-800">
-        <p>جميع الحقوق محفوظة © <span id="year"></span> لمؤسسة فواز مثنى للخدمات اللوجستية والمقاولات</p>
+    <!-- 7. FOOTER -->
+    <footer class="bg-navy-950 text-slate-400 py-8 text-center text-xs border-t border-slate-800">
+        <p> جميع الحقوق محفوظة © <span id="year"></span> لمؤسسة فواز مثنى للخدمات اللوجستية والمقاولات</p>
     </footer>
 
+    <!-- JS LOGIC & WHATSAPP REDIRECT -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+        
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            const targetPhone = "967777181933";
+            const text = `مرحباً مؤسسة فواز مثنى، لدي استفسار جديد:\n\n- *الاسم:* ${name}\n- *الهاتف:* ${phone}\n- *الخدمة:* ${service}\n- *التفاصيل:* ${message}`;
+
+            const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        });
     </script>
 </body>
 </html>
