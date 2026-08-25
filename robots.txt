@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gehadahmed-cell.github.io/fawaz-muthna/sitemap.xml
