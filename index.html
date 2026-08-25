@@ -6,10 +6,10 @@
     <title>مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Tajawal & Cairo) -->
+    <!-- Google Fonts (Cairo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -31,7 +31,6 @@
                     },
                     fontFamily: {
                         cairo: ['Cairo', 'sans-serif'],
-                        tajawal: ['Tajawal', 'sans-serif'],
                     }
                 }
             }
@@ -50,18 +49,12 @@
             background-position: 0 0, 15px 15px;
             opacity: 0.98;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(14, 42, 71, 0.95) 0%, rgba(10, 25, 47, 0.9) 100%);
-        }
         .card-hover {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .card-hover:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(14, 42, 71, 0.15), 0 10px 10px -5px rgba(14, 42, 71, 0.04);
-        }
-        .gold-border {
-            border-bottom: 3px solid #f39c12;
         }
     </style>
 </head>
@@ -149,7 +142,6 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative bg-navy-900 text-white py-20 lg:py-28 overflow-hidden">
-        <!-- Background Pattern & Images -->
         <div class="absolute inset-0 bg-pattern opacity-30"></div>
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl"></div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-navy-800/80 rounded-full blur-2xl"></div>
@@ -157,7 +149,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Hero Text -->
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
                     <div class="inline-flex items-center gap-2 bg-navy-800/80 border border-amber-500/40 text-amber-400 px-4 py-2 rounded-full text-sm font-semibold shadow-inner">
                         <i class="fa-solid fa-award"></i>
@@ -175,7 +166,6 @@
                         حلول متكاملة بجودة عالية واحترافية في التنفيذ. نقدم لك خدمات البناء والإشراف الهندسي، النقل اللوجستي والشحن، تأجير السيارات الفارهة، الصيانة والترميم، والخدمات التسويقية في محافظة عدن وجميع المحافظات.
                     </p>
 
-                    <!-- CTAs -->
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
                         <a href="#services" class="bg-amber-500 hover:bg-amber-600 text-navy-950 font-extrabold px-8 py-4 rounded-xl shadow-lg hover:shadow-amber-500/30 transition-all flex items-center gap-3 text-lg">
                             <span>استكشف خدماتنا</span>
@@ -187,7 +177,6 @@
                         </a>
                     </div>
 
-                    <!-- Quick Metrics -->
                     <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80">
                         <div>
                             <span class="block text-2xl sm:text-3xl font-black text-amber-400">100%</span>
@@ -204,20 +193,27 @@
                     </div>
                 </div>
 
-                <!-- Hero Image Showcase -->
+                <!-- Styled Graphic Card instead of external photo -->
                 <div class="lg:col-span-5 relative">
-                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-navy-800">
-                        <img src="[attachment_4](attachment)" alt="أسطول الشاحنات والنقل اللوجستي" class="w-full h-80 sm:h-96 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-transparent flex items-end p-6">
-                            <div class="bg-navy-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-700/80 w-full">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 bg-amber-500 text-navy-950 rounded-lg flex items-center justify-center font-bold">
-                                        <i class="fa-solid fa-truck-fast text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-white font-bold text-sm">نقل ودعم لوجستي آمن</p>
-                                        <p class="text-slate-400 text-xs">خدمات نقل البضائع والشحن بأعلى كفاءة</p>
-                                    </div>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-gradient-to-br from-navy-800 via-navy-900 to-amber-950 h-80 sm:h-96 flex flex-col justify-between p-6">
+                        <div class="flex justify-between items-start">
+                            <div class="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-3xl backdrop-blur-md border border-amber-500/30">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </div>
+                            <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full">خدمات متكاملة</span>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-2xl font-black text-white">أسطول لوجستي ومقاولات</h3>
+                            <p class="text-slate-300 text-sm">نحن نوفر أعلى مستويات الأمان والسرعة في النقل والتنفيذ في جميع المحافظات.</p>
+                        </div>
+                        <div class="bg-navy-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-700/80 w-full">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-amber-500 text-navy-950 rounded-lg flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">نقل ودعم لوجستي آمن</p>
+                                    <p class="text-slate-400 text-xs">خدمات نقل البضائع والشحن بأعلى كفاءة</p>
                                 </div>
                             </div>
                         </div>
@@ -235,8 +231,24 @@
                 
                 <div class="relative">
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="[attachment_2](attachment)" alt="مشاريع البناء والإشراف" class="rounded-2xl shadow-md h-64 w-full object-cover">
-                        <img src="[attachment_1](attachment)" alt="تأجير سيارات فارهة" class="rounded-2xl shadow-md h-64 w-full object-cover mt-8">
+                        <div class="bg-gradient-to-br from-navy-800 to-navy-950 p-6 rounded-2xl shadow-md h-64 w-full flex flex-col justify-between border border-slate-700">
+                            <div class="w-12 h-12 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-city"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">خبرة وإنجاز</h4>
+                                <p class="text-slate-400 text-xs mt-1">مشاريع بناء وإشراف هندسي</p>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-amber-600 to-amber-800 p-6 rounded-2xl shadow-md h-64 w-full flex flex-col justify-between text-white mt-8 border border-amber-500/30">
+                            <div class="w-12 h-12 bg-white/20 text-white rounded-xl flex items-center justify-center text-2xl">
+                                <i class="fa-solid fa-car-side"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">أسطول حديث</h4>
+                                <p class="text-amber-100 text-xs mt-1">تأجير سيارات ونقل لوجستي</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="absolute -bottom-6 -left-6 bg-navy-800 text-white p-6 rounded-2xl shadow-xl hidden sm:block border-2 border-amber-500">
                         <p class="text-3xl font-extrabold text-amber-500">عدن - البريقة</p>
@@ -252,7 +264,7 @@
                         نحن أقرب إليك .. دعنا نبدأ مشروعك القادم معاً!
                     </h2>
                     <p class="text-slate-600 text-lg leading-relaxed">
-                        تعد **مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات** إحدى المؤسسات الوطنية الرائدة المتخصصة في تقديم حزمة متكاملة من الخدمات الهندسية والإنشائية، إلى جانب حلول النقل والخدمات اللوجستية وتأجير السيارات الفارهة.
+                        تعد <strong class="text-navy-800">مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات</strong> إحدى المؤسسات الوطنية الرائدة المتخصصة في تقديم حزمة متكاملة من الخدمات الهندسية والإنشائية، إلى جانب حلول النقل والخدمات اللوجستية وتأجير السيارات الفارهة.
                     </p>
                     <p class="text-slate-600 leading-relaxed">
                         نلتزم بتطبيق أعلى معايير الجودة والسلامة في كافة مشاريعنا، معتمدين على كوادر هندسية وإدارية ذات خبرة عالية وأسطول حديث يُلبي تطلعات عملاؤنا بكفاءة واحترافية.
@@ -283,8 +295,6 @@
     <!-- Services Section -->
     <section id="services" class="py-20 bg-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Section Title -->
             <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
                 <span class="bg-navy-800 text-amber-400 font-bold px-4 py-1.5 rounded-full text-sm inline-block">
                     ماذا نقدم لك؟
@@ -297,15 +307,15 @@
                 </p>
             </div>
 
-            <!-- Services Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
                 <!-- Service 1 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 flex flex-col justify-between">
                     <div>
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="[attachment_2](attachment)" alt="بناء وإنشاء" class="w-full h-full object-cover">
-                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm">01</span>
+                        <div class="relative h-48 bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center">
+                            <div class="w-20 h-20 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-2xl flex items-center justify-center text-4xl">
+                                <i class="fa-solid fa-helmet-safety"></i>
+                            </div>
+                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm border border-amber-500/30">01</span>
                         </div>
                         <div class="p-6 space-y-4">
                             <div class="flex items-center gap-3">
@@ -337,9 +347,11 @@
                 <!-- Service 2 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 flex flex-col justify-between">
                     <div>
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="[attachment_4](attachment)" alt="الخدمات اللوجستية والنقل" class="w-full h-full object-cover">
-                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm">02</span>
+                        <div class="relative h-48 bg-gradient-to-br from-navy-900 to-amber-950 flex items-center justify-center">
+                            <div class="w-20 h-20 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-2xl flex items-center justify-center text-4xl">
+                                <i class="fa-solid fa-truck-moving"></i>
+                            </div>
+                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm border border-amber-500/30">02</span>
                         </div>
                         <div class="p-6 space-y-4">
                             <div class="flex items-center gap-3">
@@ -371,9 +383,11 @@
                 <!-- Service 3 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 flex flex-col justify-between">
                     <div>
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="[attachment_1](attachment)" alt="تأجير سيارات" class="w-full h-full object-cover">
-                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm">03</span>
+                        <div class="relative h-48 bg-gradient-to-br from-amber-700 to-navy-900 flex items-center justify-center">
+                            <div class="w-20 h-20 bg-amber-500/20 text-white border border-white/20 rounded-2xl flex items-center justify-center text-4xl">
+                                <i class="fa-solid fa-car-side"></i>
+                            </div>
+                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm border border-amber-500/30">03</span>
                         </div>
                         <div class="p-6 space-y-4">
                             <div class="flex items-center gap-3">
@@ -405,9 +419,11 @@
                 <!-- Service 4 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 flex flex-col justify-between">
                     <div>
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="[attachment_0](attachment)" alt="صيانة وترميم" class="w-full h-full object-cover">
-                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm">04</span>
+                        <div class="relative h-48 bg-gradient-to-br from-navy-800 to-slate-900 flex items-center justify-center">
+                            <div class="w-20 h-20 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-2xl flex items-center justify-center text-4xl">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm border border-amber-500/30">04</span>
                         </div>
                         <div class="p-6 space-y-4">
                             <div class="flex items-center gap-3">
@@ -439,9 +455,11 @@
                 <!-- Service 5 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover border border-slate-200 flex flex-col justify-between md:col-span-2 lg:col-span-1">
                     <div>
-                        <div class="relative h-48 overflow-hidden">
-                            <img src="[attachment_3](attachment)" alt="تسويق وتوزيع" class="w-full h-full object-cover">
-                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm">05</span>
+                        <div class="relative h-48 bg-gradient-to-br from-navy-900 to-amber-900 flex items-center justify-center">
+                            <div class="w-20 h-20 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-2xl flex items-center justify-center text-4xl">
+                                <i class="fa-solid fa-boxes-packing"></i>
+                            </div>
+                            <span class="absolute top-4 right-4 bg-navy-900 text-amber-400 font-black px-3 py-1 rounded-lg text-sm border border-amber-500/30">05</span>
                         </div>
                         <div class="p-6 space-y-4">
                             <div class="flex items-center gap-3">
@@ -519,12 +537,11 @@
         </div>
     </section>
 
-    <!-- Contact & Location Section -->
+    <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12">
                 
-                <!-- Contact Info -->
                 <div class="lg:col-span-5 space-y-8">
                     <div>
                         <span class="bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-md text-sm">تواصل معنا</span>
@@ -549,7 +566,7 @@
                             </div>
                             <div>
                                 <h4 class="font-bold text-navy-800 text-lg">أرقام التواصل والواتساب</h4>
-                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-6 mt-1 font-bold text-amber-600 dir-ltr text-right">
+                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-6 mt-1 font-bold text-amber-600">
                                     <a href="tel:777181933" class="hover:underline">777181933</a>
                                     <a href="tel:772037226" class="hover:underline">772037226</a>
                                 </div>
@@ -572,7 +589,6 @@
                     </div>
                 </div>
 
-                <!-- Contact Form -->
                 <div class="lg:col-span-7 bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-md">
                     <h3 class="text-2xl font-bold text-navy-800 mb-6">أرسل لنا طلبك أو استفسارك</h3>
                     <form id="contactForm" class="space-y-4">
@@ -658,14 +674,12 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile menu toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Form submission demo
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             alert('شكراً لتواصلك مع مؤسسة فواز مثنى! تم استلام طلبك وبانتظار التواصل معكم في أقرب وقت.');
@@ -674,13 +688,3 @@
     </script>
 </body>
 </html>
-```eof
-
-تم إنشاء كود الموقع الإلكتروني كاملاً لمؤسسة **فواز مثنى للخدمات اللوجستية والمقاولات** بأسلوب احترافي وتصميم متجاوب يعكس ألوان الهوية البصرية الموجودة في البروشور.
-
-**مميزات هذا التصميم:**
-* **هيكلية واضحة متكاملة:** تشمل الصفحة الرئيسية، نبذة عن المؤسسة، جميع الخدمات الخمسة المفصلة، معايير الجودة، ونموذج التواصل المباشر.
-* **ربط مباشر بالواتساب والاتصال:** لسهولة تواصل العملاء بحسب الأرقام المحددة في البروشور (`777181933` و `772037226`).
-* **صور توضيحية حقيقية وعالية الدقة:** تم استدعاؤها للقطاعات الخمسة (البناء، الشاحنات، تويوتا برادو، الصيانة، المخازن).
-
-هل ترغب في تعديل أي ألوان، نصوص، أو إضافة أجزاء أخرى قبل رفع الملف إلى **GitHub** ونشره على السحابة؟
