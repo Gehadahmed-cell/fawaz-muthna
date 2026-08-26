@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الصفحة غير موجودة | مؤسسة فواز مثنى</title>
+<meta name="robots" content="noindex">
+<!--
+  صفحة الخطأ 404 — مستقلة تماماً بلا صور أو خطوط خارجية،
+  لأن GitHub Pages يعرضها على أي عمق من الروابط فتنكسر المسارات النسبية.
+-->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy-950:#071B33;--navy-900:#0B2545;--navy-800:#123A63;
+  --orange-500:#F07C22;--orange-600:#D96A15;--teal-500:#1B8FA3;
+  --font:'Segoe UI',Tahoma,'Noto Sans Arabic','Noto Kufi Arabic',sans-serif;
+}
+body{
+  font-family:var(--font);
+  background:linear-gradient(135deg,var(--navy-800),var(--navy-900) 55%,var(--navy-950));
+  color:rgba(255,255,255,.78);
+  min-height:100vh;display:grid;place-items:center;
+  padding:2rem 1.25rem;position:relative;
+  -webkit-font-smoothing:antialiased;line-height:1.9;
+}
+/* أشكال الهوية القُطرية — داخل حاوية تقصّها، لأن overflow على body
+   يُمرَّر إلى نافذة العرض بدل أن يقصّ محتوى body نفسه */
+.bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bg span{position:absolute;display:block;border-radius:4rem}
+.bg span:nth-child(1){inset-block-start:-7rem;inset-inline-start:-7rem;width:24rem;height:24rem;background:var(--orange-500);opacity:.13;transform:rotate(38deg)}
+.bg span:nth-child(2){inset-block-end:-8rem;inset-inline-end:-7rem;width:26rem;height:26rem;background:var(--teal-500);opacity:.12;transform:rotate(28deg)}
+
+.card{position:relative;z-index:1;text-align:center;max-width:34rem}
+.mark{width:auto;height:4.25rem;margin:0 auto 1.75rem;display:block;max-width:100%}
+.code{
+  font-size:clamp(3.5rem,12vw,5.5rem);font-weight:900;line-height:1;
+  color:var(--orange-500);letter-spacing:.02em;direction:ltr;
+}
+h1{color:#fff;font-size:clamp(1.25rem,4vw,1.75rem);font-weight:800;margin-block:1rem .75rem;text-wrap:balance}
+p{font-size:.95rem;color:rgba(255,255,255,.7);margin-bottom:2rem;text-wrap:pretty}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 1.75rem;border-radius:.9rem;
+  font-weight:800;font-size:.9rem;text-decoration:none;
+  border:2px solid transparent;transition:transform .2s,background .2s,border-color .2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn--orange{background:var(--orange-500);color:#fff;box-shadow:0 10px 26px rgba(240,124,34,.28)}
+.btn--orange:hover{background:var(--orange-600)}
+.btn--ghost{border-color:rgba(255,255,255,.32);color:#fff}
+.btn--ghost:hover{border-color:var(--orange-500);background:var(--orange-500)}
+.contact{margin-top:2.25rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.14);font-size:.8rem;color:rgba(255,255,255,.55)}
+.contact a{color:var(--orange-500);text-decoration:none;font-weight:700;direction:ltr;display:inline-block}
+.contact a:hover{text-decoration:underline}
+:where(a):focus-visible{outline:2px solid var(--orange-500);outline-offset:3px;border-radius:.5rem}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><span></span><span></span></div>
+
+  <div class="card">
+    <!--
+      مسار مطلق لأن GitHub Pages يعرض هذه الصفحة على أي عمق من الروابط،
+      فالمسار النسبي ينكسر. لو نُقل الموقع إلى نطاق مخصص غيّر /fawaz-muthna/
+      هنا وفي زر «العودة إلى الرئيسية» أدناه. onerror يخفي الصورة بدل أن
+      تظهر أيقونة مكسورة لو تغيّر المسار.
+    -->
+    <img class="mark" src="/fawaz-muthna/assets/logo-dark.png"
+         alt="شعار مؤسسة فواز مثنى" width="999" height="593"
+         onerror="this.style.display='none'">
+
+    <div class="code">404</div>
+    <h1>عذراً، هذه الصفحة غير موجودة</h1>
+    <p>
+      ربما تغيّر الرابط أو حُذفت الصفحة. يمكنك العودة إلى الصفحة الرئيسية،
+      أو التواصل معنا مباشرة وسنساعدك فوراً.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn--orange" href="/fawaz-muthna/">العودة إلى الرئيسية</a>
+      <a class="btn btn--ghost" href="https://wa.me/967777181933" target="_blank" rel="noopener">تواصل عبر الواتساب</a>
+    </div>
+
+    <p class="contact">
+      مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات — عدن، البريقة، بئر أحمد<br>
+      <a href="tel:+967777181933">777 181 933</a> &nbsp;·&nbsp;
+      <a href="tel:+967772037226">772 037 226</a>
+    </p>
+  </div>
+</body>
+</html>
