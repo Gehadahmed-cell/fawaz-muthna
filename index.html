@@ -44,15 +44,35 @@
 <link rel="preload" as="image" href="assets/logo.png">
 <link rel="preload" as="image" href="assets/brochure.jpg">
 
-<!-- الخط: تحسين اختياري — لو فشل تحميله يعمل الموقع بخط النظام العربي دون خلل -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"></noscript>
+<!-- الخطوط مستضافة محلياً: لا طلبات خارجية إطلاقاً، وتعمل مع ضعف الإنترنت -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/changa-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/tajawal-400.woff2" crossorigin>
 
 <script>document.documentElement.classList.replace('no-js','js');</script>
 
 <style>
+/* ============================================================
+   0. الخطوط — مستضافة محلياً داخل assets/fonts
+   Changa للعناوين (خط متغيّر الأوزان، ملف واحد يغطي 200–800)
+   Tajawal للمتن (ثلاثة أوزان)
+   كلاهما برخصة SIL OFL — نسخة الرخصة بجوار الملفات.
+   ============================================================ */
+@font-face{
+  font-family:'Changa';
+  src:url('assets/fonts/changa-var.woff2') format('woff2');
+  font-weight:200 800;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Tajawal';
+  src:url('assets/fonts/tajawal-400.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Tajawal';
+  src:url('assets/fonts/tajawal-700.woff2') format('woff2');
+  font-weight:700;font-style:normal;font-display:swap;
+}
+
 /* ============================================================
    1. إعادة الضبط
    ============================================================ */
@@ -100,8 +120,10 @@ ul,ol{list-style:none}
   --gap:clamp(1rem,2.2vw,1.75rem);
   --pad:clamp(1rem,4vw,2rem);
 
-  --font:'Cairo','Segoe UI',Tahoma,'Noto Sans Arabic','Noto Kufi Arabic',sans-serif;
-  --fs-hero:clamp(1.8rem,3.9vw,2.8rem);
+  /* خطّان: Changa للعناوين، Tajawal للمتن */
+  --font-display:'Changa','Segoe UI',Tahoma,'Noto Kufi Arabic',sans-serif;
+  --font:'Tajawal','Segoe UI',Tahoma,'Noto Sans Arabic',sans-serif;
+  --fs-hero:clamp(1.65rem,3.15vw,2.5rem);
   --fs-h2:clamp(1.55rem,3.3vw,2.5rem);
   --fs-h3:clamp(1.05rem,1.55vw,1.25rem);
   --fs-body:clamp(.95rem,1.1vw,1.03rem);
@@ -134,7 +156,19 @@ body{
 body.is-locked{overflow:hidden}
 ::selection{background:var(--orange-500);color:#fff}
 
-h1,h2,h3,h4{color:var(--ink-900);line-height:1.35;font-weight:800;text-wrap:balance}
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  color:var(--ink-900);line-height:1.4;font-weight:700;
+  text-wrap:balance;letter-spacing:0;
+}
+
+/* العناصر التي تحمل نبرة العناوين: الأزرار، الأرقام، الشعار النصي، التنقل */
+.brand__name,.brand__tag,.btn,.nav a,.mobile-nav a,
+.eyebrow,.stat__num,.service__no,.step__no,.filter,
+.hero__badge,.hero__ribbon,.pillar span,.showcase__stat,.showcase__caption,
+.faq summary,.footer h4,.field label{
+  font-family:var(--font-display);
+}
 p{text-wrap:pretty}
 strong{color:var(--ink-900);font-weight:700}
 
