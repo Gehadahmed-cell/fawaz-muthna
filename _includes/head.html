@@ -1,16 +1,12 @@
 {%- comment -%}
   وسوم <head> المشتركة. تقرأ من front matter الصفحة:
-    title, description, keywords, robots, og_type, noindex,
-    og_title / og_description / twitter_description (اختيارية — تعود إلى
-    العنوان والوصف إن غابت)، preload_images.
-  صفحات الخدمات تأخذ عنوان أوبن‑جراف القصير من _data/services.yml تلقائياً.
+    title, description, keywords, robots, og_type, noindex, preload_images،
+    و og_description اختيارية (تعود إلى description إن غابت).
+  og:title و twitter:title = title دائماً، و twitter:description يرث
+  og:description — فلا تتفرّع القيم ولا تخرج عن مدى الطول المعتمد
+  (50–60 حرفاً للعناوين، 140–160 للأوصاف).
 {%- endcomment -%}
-{%- if page.service -%}
-  {%- assign svc = site.data.services | where: "slug", page.service | first -%}
-{%- endif -%}
-{%- assign og_title = page.og_title | default: svc.title | default: page.title -%}
 {%- assign og_desc = page.og_description | default: page.description -%}
-{%- assign tw_desc = page.twitter_description | default: og_desc -%}
 {%- assign page_url = page.url | replace: '/index.html', '/' | absolute_url -%}
 {%- assign is_home = false -%}
 {%- if page.url == '/' or page.url == '/index.html' -%}{%- assign is_home = true -%}{%- endif -%}
@@ -33,15 +29,15 @@
 <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
 <meta property="og:locale" content="ar_YE">
 <meta property="og:site_name" content="{{ site.title }}">
-<meta property="og:title" content="{{ og_title }}">
+<meta property="og:title" content="{{ page.title }}">
 <meta property="og:description" content="{{ og_desc }}">
 <meta property="og:url" content="{{ page_url }}">
 <meta property="og:image" content="{{ '/assets/og-image.jpg' | absolute_url }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ og_title }}">
-<meta name="twitter:description" content="{{ tw_desc }}">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="{{ og_desc }}">
 <meta name="twitter:image" content="{{ '/assets/og-image.jpg' | absolute_url }}">
 {%- if is_home %}
 
