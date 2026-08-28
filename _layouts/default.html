@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}" dir="{{ site.dir }}" class="no-js">
+<head>
+{%- include head.html %}
+</head>
+<body>
+
+<a class="skip" href="#main">تخطَّ إلى المحتوى الرئيسي</a>
+
+{% include icons.html %}
+{% include topbar.html %}
+{% include header.html %}
+
+<main id="main">
+{{ content }}
+</main>
+
+{% include footer.html %}
+{% include floats.html %}
+
+{%- comment -%}
+  البيانات المنظّمة: كل صفحة تحدّد ملف مخططها في front matter عبر
+  schema: <اسم الملف> — فتخرج خارج <main> كما ينبغي.
+{%- endcomment -%}
+{%- if page.schema %}
+{% include {{ page.schema }} %}
+{%- endif %}
+
+<script src="{{ '/assets/site.js' | relative_url }}" defer></script>
+
+</body>
+</html>

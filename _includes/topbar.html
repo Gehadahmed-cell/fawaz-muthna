@@ -1,0 +1,26 @@
+{%- comment -%} الشريط العلوي: الموقع، ساعات العمل، هاتفان {%- endcomment -%}
+<div class="topbar">
+  <div class="container topbar__inner">
+    <div class="topbar__group">
+      <span class="topbar__item">
+        <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+        {{ site.org.address_line }}
+      </span>
+      <span class="topbar__item">
+        <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+        {{ site.org.hours_line }}: <span class="num">{{ site.org.opens }}</span> صباحاً – <span class="num">{{ site.org.closes }}</span> مساءً
+      </span>
+    </div>
+    <div class="topbar__group">
+      <a class="topbar__item" href="tel:{{ site.org.phone_primary_tel }}">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span class="num">{{ site.org.phone_primary }}</span>
+      </a>
+      <span class="topbar__sep" aria-hidden="true">|</span>
+      <a class="topbar__item" href="tel:{{ site.org.phone_secondary_tel }}">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span class="num">{{ site.org.phone_secondary }}</span>
+      </a>
+    </div>
+  </div>
+</div>

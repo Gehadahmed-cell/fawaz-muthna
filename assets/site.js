@@ -74,39 +74,6 @@
     reveals.forEach(function (el) { revealObserver.observe(el); });
   }
 
-  /* --- عدّادات الأرقام --- */
-  var counters = document.querySelectorAll('[data-count]');
-
-  function runCounter(el) {
-    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    if (reduceMotion) { el.textContent = target; return; }
-
-    var duration = 1400;
-    var start = performance.now();
-
-    function step(now) {
-      var p = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased);
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  if ('IntersectionObserver' in window) {
-    var countObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          runCounter(entry.target);
-          countObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(function (el) { countObserver.observe(el); });
-  } else {
-    counters.forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
-  }
-
   /* --- إبراز رابط القسم النشط --- */
   // في صفحات الخدمات تشير روابط التنقل إلى ../index.html#… وليست محدّدات CSS،
   // لذلك نقتصر على الروابط الداخلية التي تبدأ بـ #

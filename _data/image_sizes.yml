@@ -1,0 +1,34 @@
+# الأبعاد الأصلية الحقيقية لكل صورة — تُقرأ من الملفات نفسها.
+# تمنع انزياح التخطيط (CLS)، وتُصحّح خطأ سابق كانت فيه صفحات الخدمات
+# تعلن 800×600 لصور عرضها الفعلي 146–428 بكسل.
+
+- file: "brochure.jpg"
+  w: 1080
+  h: 810
+- file: "icon.png"
+  w: 512
+  h: 512
+- file: "logo-dark.png"
+  w: 999
+  h: 593
+- file: "logo.png"
+  w: 955
+  h: 617
+- file: "og-image.jpg"
+  w: 1200
+  h: 630
+- file: "service-01.jpg"
+  w: 146
+  h: 212
+- file: "service-02.jpg"
+  w: 164
+  h: 200
+- file: "service-03.jpg"
+  w: 176
+  h: 185
+- file: "service-04.jpg"
+  w: 176
+  h: 185
+- file: "service-05.jpg"
+  w: 428
+  h: 180

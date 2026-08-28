@@ -1,0 +1,144 @@
+---
+layout: default
+---
+{%- comment -%}
+  قالب صفحة الخدمة الوحيد. يقرأ مدخله من _data/services.yml عبر page.service،
+  فتصبح ملفات services/*.html واجهات من front matter فقط.
+{%- endcomment -%}
+{%- assign s = site.data.services | where: "slug", page.service | first -%}
+{%- assign panel_title = "طلب " | append: s.name -%}
+
+<nav class="crumbs" aria-label="مسار التصفح">
+  <div class="container">
+    <ol>
+      <li><a href="{{ '/' | relative_url }}">الرئيسية</a></li>
+      <li><a href="{{ '/#services' | relative_url }}">خدماتنا</a></li>
+      <li><span aria-current="page">{{ s.name }}</span></li>
+    </ol>
+  </div>
+</nav>
+
+<article>
+  <section class="svc-hero">
+    <div class="corner-shapes" aria-hidden="true"><span></span><span></span></div>
+    <div class="container svc-hero__inner">
+      <div class="reveal">
+        <span class="svc-hero__no">
+          <svg class="icon" aria-hidden="true"><use href="#{{ s.icon }}"/></svg>
+          الخدمة <b>{{ s.num }}</b> من خمس
+        </span>
+        <h1>{{ s.name }}</h1>
+        <p>{{ s.lead }}</p>
+        <div class="svc-hero__actions">
+          <a class="btn btn--orange btn--lg" href="#request">
+            اطلب عرض سعر
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-l"/></svg>
+          </a>
+          <a class="btn btn--outline-light btn--lg" href="tel:{{ site.org.phone_primary_tel }}">
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+            <span class="num">{{ site.org.phone_primary }}</span>
+          </a>
+        </div>
+      </div>
+      <div class="svc-hero__media reveal" style="--d:.15s">
+        {%- assign dims = site.data.image_sizes | where: "file", s.photo | first %}
+        <img src="{{ s.photo | prepend: '/assets/' | relative_url }}" alt="{{ s.photo_alt }}"
+             width="{{ dims.w }}" height="{{ dims.h }}">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">ماذا تشمل الخدمة</span>
+        <h2>ما ننفّذه لك بالتحديد</h2>
+      </div>
+      <ul class="checklist reveal">
+        {%- for item in s.includes %}
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>{{ item }}</span></li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">خطوات العمل</span>
+        <h2>من أول اتصال حتى التسليم</h2>
+        <p>أربع مراحل واضحة — تعرف في أي منها مشروعك.</p>
+      </div>
+      <div class="steps">
+        {%- for st in s.steps %}
+        <article class="step reveal"{% unless forloop.first %} style="--d:{{ forloop.index0 | times: 8 | divided_by: 100.0 }}s"{% endunless %}>
+          <span class="step__no" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <h3>{{ st.title }}</h3>
+          <p>{{ st.body }}</p>
+        </article>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">لماذا نحن</span>
+        <h2>ما يميّزنا في هذه الخدمة</h2>
+      </div>
+      <div class="why" style="margin-top:0">
+        {%- for w in s.why %}
+        <div class="why__item reveal"{% unless forloop.first %} style="--d:{{ forloop.index0 | times: 6 | divided_by: 100.0 }}s"{% endunless %}>
+          <svg class="icon" aria-hidden="true"><use href="#{{ w.icon }}"/></svg>
+          <div>
+            <h3>{{ w.title }}</h3>
+            <p>{{ w.body }}</p>
+          </div>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">أسئلة شائعة</span>
+        <h2>عن {{ s.name }}</h2>
+      </div>
+      <div class="faq reveal">
+        {%- for f in s.faq %}
+        <details>
+          <summary>{{ f.q }} <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="faq__answer">{{ f.a }}</div>
+        </details>
+        {%- endfor %}
+      </div>
+    </div>
+  </section>
+
+  {% include contact.html
+       id="request"
+       eyebrow="اطلب الخدمة"
+       title="أخبرنا بما تحتاجه.. ونتكفّل بالباقي"
+       lead="يصلك الرد خلال ساعات العمل الرسمية."
+       panel_title=panel_title
+       selected=s.name %}
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">خدمات أخرى</span>
+        <h2>تصفّح بقية خدماتنا</h2>
+      </div>
+      <nav class="related reveal" aria-label="بقية الخدمات">
+        {%- for o in site.data.services %}
+        {%- unless o.slug == s.slug %}
+        <a href="{{ o.slug | append: '.html' }}"><svg class="icon" aria-hidden="true"><use href="#{{ o.icon }}"/></svg> {{ o.name }}</a>
+        {%- endunless %}
+        {%- endfor %}
+      </nav>
+    </div>
+  </section>
+</article>
