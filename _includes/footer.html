@@ -1,0 +1,78 @@
+{%- comment -%}
+  الفوتر. أيقونة فيسبوك ورابطها أُزيلا نهائياً — الصفحة غير موجودة.
+  روابط الخدمات تشير الآن إلى صفحاتها المستقلة بدل مرساة #services.
+{%- endcomment -%}
+{%- assign is_home = false -%}
+{%- if page.url == '/' or page.url == '/index.html' -%}{%- assign is_home = true -%}{%- endif -%}
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <div class="brand brand--light">
+          <img class="brand__mark" src="{{ '/assets/logo-dark.png' | relative_url }}"
+               alt="شعار {{ site.title }}" width="999" height="593" loading="lazy">
+          <span>
+            <span class="brand__name">{{ site.title }}</span>
+            <span class="brand__tag">{{ site.tagline }}</span>
+          </span>
+        </div>
+        <p>
+          شريكك الموثوق لبناء المستقبل وتسهيل أعمالك — البناء والإنشاء، الخدمات اللوجستية والنقل،
+          تأجير السيارات، الصيانة والترميم، والتسويق والتوزيع، بمعايير عالمية.
+        </p>
+        <div class="socials">
+          <a href="https://wa.me/{{ site.org.whatsapp }}" target="_blank" rel="noopener" aria-label="تواصل عبر الواتساب">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+          </a>
+          <a href="tel:{{ site.org.phone_primary_tel }}" aria-label="اتصل بنا هاتفياً">
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__links" aria-label="روابط سريعة">
+        <h4>روابط سريعة</h4>
+        <ul>
+          {%- for item in site.nav %}
+          {%- assign frag = item.href | remove_first: '/' %}
+          <li><a href="{% if is_home %}{{ frag }}{% else %}{{ item.href | relative_url }}{% endif %}">{{ item.label }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+
+      <nav class="footer__links" aria-label="خدماتنا">
+        <h4>خدماتنا</h4>
+        <ul>
+          {%- for s in site.data.services %}
+          <li><a href="{{ '/services/' | append: s.slug | append: '.html' | relative_url }}">{{ s.name }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+
+      <div class="footer__contact">
+        <h4>بيانات التواصل</h4>
+        <ul>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+            <span>{{ site.org.address_line }}</span>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+            <span>
+              <a href="tel:{{ site.org.phone_primary_tel }}" class="num">{{ site.org.phone_primary }}</a><br>
+              <a href="tel:{{ site.org.phone_secondary_tel }}" class="num">{{ site.org.phone_secondary }}</a>
+            </span>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+            <span>{{ site.org.hours_line }}: <span class="num">{{ site.org.opens }}</span> ص – <span class="num">{{ site.org.closes }}</span> م</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>جميع الحقوق محفوظة © <span class="num" id="year">{{ 'now' | date: "%Y" }}</span> — {{ site.title }} {{ site.tagline }}</p>
+    </div>
+  </div>
+</footer>

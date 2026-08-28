@@ -1,0 +1,90 @@
+{%- comment -%}
+  مخطط الصفحة الرئيسية: LocalBusiness + FAQPage.
+  النصوص منقولة كما هي؛ الثوابت المتكرّرة صارت من _config.yml.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "GeneralContractor"],
+  "name": "مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات",
+  "alternateName": "Fawaz Muthna Est. for Logistics Services and Contracting",
+  "slogan": "شريكك الموثوق لبناء المستقبل وتسهيل أعمالك",
+  "url": "{{ '/' | absolute_url }}",
+  "logo": "{{ '/assets/logo.png' | absolute_url }}",
+  "image": "{{ '/assets/og-image.jpg' | absolute_url }}",
+  "description": "البناء والإنشاء، الخدمات اللوجستية والنقل، تأجير السيارات، الصيانة والترميم، التسويق والتوزيع — في عدن وجميع المحافظات.",
+  "telephone": "{{ site.org.phone_primary_tel }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "بئر أحمد",
+    "addressLocality": "مديرية البريقة",
+    "addressRegion": "محافظة عدن",
+    "addressCountry": "YE"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 12.8006, "longitude": 44.9339 },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "محافظة عدن" },
+    { "@type": "Country", "name": "اليمن" }
+  ],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "{{ site.org.phone_secondary_tel }}",
+    "availableLanguage": ["ar"]
+  }],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "خدمات المؤسسة",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "بناء وإنشاء" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "الخدمات اللوجستية والنقل" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "تأجير سيارات" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "صيانة وترميم" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "تسويق وتوزيع" } }
+    ]
+  }
+}</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ما المناطق التي تغطيها خدماتكم؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "مقرنا في محافظة عدن — مديرية البريقة — بئر أحمد، ونقدّم خدماتنا في عدن وجميع المحافظات وفق نطاق التشغيل المتاح." }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف أحصل على عرض سعر؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "عبّئ النموذج في قسم تواصل معنا ليصلنا طلبك على الواتساب، أو اتصل على 777181933. كلما كانت تفاصيل الطلب أوضح كان العرض أدق وأسرع." }
+    },
+    {
+      "@type": "Question",
+      "name": "هل تنفذون مشاريع خارج محافظة عدن؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "نعم، لدينا أسطول حديث يتيح العمل خارج عدن، وتُحتسب تكاليف النقل والإقامة ضمن عرض السعر بشكل واضح قبل التعاقد." }
+    },
+    {
+      "@type": "Question",
+      "name": "ما أنواع السيارات المتاحة للتأجير؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "سيارات حديثة من فئة VIP (تويوتا برادو) لكبار الشخصيات ورجال الأعمال — راحة وفخامة وأمان، مع سائق عند الطلب، بعقود يومية أو شهرية." }
+    },
+    {
+      "@type": "Question",
+      "name": "ماذا تشمل خدمة التسويق والتوزيع؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "خدمات تسويق فعالة وتوزيع في الوقت المناسب عبر شبكة توزيع واسعة تضمن وصول منتجاتك إلى الأسواق المستهدفة." }
+    },
+    {
+      "@type": "Question",
+      "name": "ما مواعيد العمل ووسائل التواصل؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "من السبت إلى الخميس، 8:00 صباحاً حتى 6:00 مساءً. التواصل عبر 777181933 أو 772037226، أو عبر الواتساب مباشرة." }
+    }
+  ]
+}</script>

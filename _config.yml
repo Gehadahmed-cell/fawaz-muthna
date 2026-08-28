@@ -1,0 +1,47 @@
+# إعدادات Jekyll — يبنيه GitHub Pages تلقائياً، بلا أي إضافات (plugins)
+# ولا اعتماديات npm.
+
+title: "مؤسسة فواز مثنى"
+tagline: "للخدمات اللوجستية والمقاولات"
+description: "مؤسسة فواز مثنى للخدمات اللوجستية والمقاولات — بناء وإنشاء، خدمات لوجستية ونقل، تأجير سيارات، صيانة وترميم، تسويق وتوزيع. عدن — البريقة — بئر أحمد."
+lang: "ar"
+dir: "rtl"
+
+# الموقع يُقدَّم على مسار فرعي. عند الانتقال إلى نطاق مخصص:
+# اجعل baseurl فارغاً ("") وحدّث url.
+url: "https://gehadahmed-cell.github.io"
+baseurl: "/fawaz-muthna"
+
+# بيانات المؤسسة — مصدر واحد يغذّي الهيدر والفوتر والبيانات المنظّمة
+org:
+  phone_primary: "777 181 933"
+  phone_primary_tel: "+967777181933"
+  phone_secondary: "772 037 226"
+  phone_secondary_tel: "+967772037226"
+  whatsapp: "967777181933"
+  address_line: "محافظة عدن — مديرية البريقة — بئر أحمد"
+  street: "بئر أحمد"
+  locality: "مديرية البريقة"
+  region: "محافظة عدن"
+  country: "YE"
+  hours_line: "السبت – الخميس"
+  opens: "8:00"
+  closes: "6:00"
+  lat: 12.8006
+  lng: 44.9339
+  google_verification: "pY-gW0orpKi8kiJ3iLzEhuvlS51ApoTtr6m__NqNM04"
+
+# روابط التنقل — تُستخدم في الهيدر وقائمة الجوال والفوتر
+nav:
+  - { href: "/#home",     label: "الرئيسية" }
+  - { href: "/#about",    label: "من نحن" }
+  - { href: "/#services", label: "ماذا نقدم لك؟" }
+  - { href: "/#process",  label: "كيف نعمل" }
+  - { href: "/#profile",  label: "ملفنا التعريفي" }
+  - { href: "/#faq",      label: "أسئلة شائعة" }
+  - { href: "/#contact",  label: "تواصل معنا" }
+
+# لا يوجد exclude مخصّص عمداً: كل ملف يُنشر اليوم يجب أن يظل يُنشر.
+# ملفا OFL-*.txt تحديداً يجب أن يُنشرا — رخصة SIL OFL تشترط مرافقة نص
+# الرخصة للخطوط عند إعادة توزيعها، والخطوط تُقدَّم من assets/fonts.
+# مجلدات _ و . يستثنيها Jekyll تلقائياً.

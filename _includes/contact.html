@@ -1,0 +1,119 @@
+{%- comment -%}
+  قسم التواصل المشترك. المعاملات:
+    id             معرّف القسم        (افتراضي: contact)
+    eyebrow, title, lead              نصوص الترويسة
+    panel_title    عنوان لوحة النموذج
+    selected       اسم الخدمة المختارة مسبقاً في القائمة (اختياري)
+    map            "true" لإظهار الخريطة
+
+  تنبيه: معرّف النموذج (request-form) وأسماء الحقول ومعرّفاتها
+  (name / phone / service / city / message) مربوطة بـ assets/site.js —
+  لا تُغيَّر. النموذج بلا action/method عمداً: يعترضه السكربت ويبني
+  رابط واتساب.
+{%- endcomment -%}
+<section class="section section--navy contact" id="{{ include.id | default: 'contact' }}">
+  <div class="corner-shapes" aria-hidden="true"><span></span><span></span></div>
+
+  <div class="container contact__inner">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">{{ include.eyebrow }}</span>
+      <h2>{{ include.title }}</h2>
+      <p>{{ include.lead }}</p>
+    </div>
+
+    <div class="contact__grid">
+      <div class="contact-cards reveal">
+        <a class="contact-card" href="tel:{{ site.org.phone_primary_tel }}">
+          <span class="icon-badge icon-badge--navy" aria-hidden="true"><svg class="icon"><use href="#i-phone"/></svg></span>
+          <span>
+            <h4>للتواصل والاستفسار</h4>
+            <span class="num">{{ site.org.phone_primary }}</span>
+            <span class="num">{{ site.org.phone_secondary }}</span>
+          </span>
+        </a>
+
+        <a class="contact-card" href="https://wa.me/{{ site.org.whatsapp }}" target="_blank" rel="noopener">
+          <span class="icon-badge icon-badge--navy" aria-hidden="true"><svg class="icon"><use href="#i-wa"/></svg></span>
+          <span>
+            <h4>واتساب</h4>
+            <p>محادثة مباشرة وأسرع طريقة للرد</p>
+          </span>
+        </a>
+
+        <div class="contact-card">
+          <span class="icon-badge icon-badge--navy" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></span>
+          <span>
+            <h4>العنوان الرئيسي</h4>
+            <p>{{ site.org.address_line }}</p>
+          </span>
+        </div>
+
+        <div class="contact-card">
+          <span class="icon-badge icon-badge--navy" aria-hidden="true"><svg class="icon"><use href="#i-clock"/></svg></span>
+          <span>
+            <h4>ساعات العمل</h4>
+            <p>{{ site.org.hours_line }}: <span class="num">{{ site.org.opens }}</span> ص – <span class="num">{{ site.org.closes }}</span> م<br>الجمعة: إجازة</p>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-panel reveal" style="--d:.12s">
+        <h3>{{ include.panel_title }}</h3>
+        <p>يُرسَل طلبك مباشرة إلى واتساب المؤسسة — لا يُحفظ على هذا الموقع.</p>
+
+        <form id="request-form" novalidate>
+          <div class="field" id="field-name">
+            <label for="name">الاسم الكامل <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="أدخل اسمك الكريم" required>
+            <span class="field__error">الرجاء إدخال الاسم.</span>
+          </div>
+
+          <div class="field" id="field-phone">
+            <label for="phone">رقم الهاتف <span class="req" aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" dir="ltr" inputmode="numeric"
+                   autocomplete="tel" placeholder="7XXXXXXXX" required>
+            <span class="field__error">الرجاء إدخال رقم هاتف صحيح (٩ أرقام تبدأ بـ 7).</span>
+          </div>
+
+          <div class="field">
+            <label for="service">نوع الخدمة المطلوبة</label>
+            <select id="service" name="service">
+              {%- for s in site.data.services %}
+              <option{% if include.selected == s.name %} selected{% endif %}>{{ s.name }}</option>
+              {%- endfor %}
+              <option{% if include.selected == 'استفسار عام' %} selected{% endif %}>استفسار عام</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="city">المدينة / الموقع</label>
+            <input type="text" id="city" name="city" placeholder="مثال: عدن — المنصورة">
+          </div>
+
+          <div class="field" id="field-message">
+            <label for="message">تفاصيل الطلب <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="اكتب تفاصيل الطلب: طبيعة العمل، المدة المتوقعة، أي ملاحظات..." required></textarea>
+            <span class="field__error">الرجاء كتابة تفاصيل الطلب.</span>
+          </div>
+
+          <button class="btn btn--green btn--block btn--lg" type="submit">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+            إرسال الطلب عبر الواتساب
+          </button>
+          <p class="form-note">بالضغط على الزر سيُفتح تطبيق الواتساب بالرسالة جاهزة للإرسال.</p>
+        </form>
+      </div>
+    </div>
+
+    {%- if include.map %}
+    <!-- الخريطة: موقع تقريبي لبئر أحمد — البريقة.
+         لتحديد المقر بدقة: افتح خرائط جوجل، انسخ إحداثيات المؤسسة، وضعها مكان الأرقام في q= -->
+    <div class="map reveal">
+      <iframe
+        src="https://www.google.com/maps?q={{ site.org.lat }},{{ site.org.lng }}&hl=ar&z=14&output=embed"
+        title="موقع {{ site.title }} على الخريطة — البريقة، بئر أحمد، عدن"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    {%- endif %}
+  </div>
+</section>

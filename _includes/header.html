@@ -1,0 +1,49 @@
+{%- comment -%}
+  الهيدر والتنقل. روابط التنقل تُبنى من site.nav.
+  على الصفحة الرئيسية تبقى مراسي محضة (#about) ليعمل التمرير السلس
+  ومراقب القسم النشط في site.js؛ على بقية الصفحات تصبح روابط كاملة.
+{%- endcomment -%}
+{%- assign is_home = false -%}
+{%- if page.url == '/' or page.url == '/index.html' -%}{%- assign is_home = true -%}{%- endif -%}
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="brand" href="{% if is_home %}#home{% else %}{{ '/' | relative_url }}{% endif %}"
+       aria-label="{{ site.title }} — الصفحة الرئيسية">
+      <img class="brand__mark" src="{{ '/assets/logo.png' | relative_url }}"
+           alt="شعار {{ site.title }}" width="955" height="617">
+      <span>
+        <span class="brand__name">{{ site.title }}</span>
+        <span class="brand__tag">{{ site.tagline }}</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="primary-nav" aria-label="التنقل الرئيسي">
+      {%- for item in site.nav %}
+      {%- assign frag = item.href | remove_first: '/' %}
+      <a href="{% if is_home %}{{ frag }}{% else %}{{ item.href | relative_url }}{% endif %}">{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+
+    <a class="btn btn--orange header__cta" href="{% if is_home %}#contact{% else %}#request{% endif %}">
+      <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+      {% if is_home %}اطلب خدمة الآن{% else %}اطلب الخدمة{% endif %}
+    </a>
+
+    <button class="burger" id="burger" type="button"
+            aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-nav">
+      <svg class="icon icon--open" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon icon--close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="قائمة الجوال">
+    {%- for item in site.nav %}
+    {%- assign frag = item.href | remove_first: '/' %}
+    <a href="{% if is_home %}{{ frag }}{% else %}{{ item.href | relative_url }}{% endif %}">{{ item.label }}</a>
+    {%- endfor %}
+    <a class="btn btn--green btn--block" href="https://wa.me/{{ site.org.whatsapp }}" target="_blank" rel="noopener">
+      <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+      تواصل عبر الواتساب
+    </a>
+  </nav>
+</header>
