@@ -31,7 +31,7 @@
       </div>
 
       <nav class="footer__links" aria-label="روابط سريعة">
-        <h4>روابط سريعة</h4>
+        <h2>روابط سريعة</h2>
         <ul>
           {%- for item in site.nav %}
           {%- assign frag = item.href | remove_first: '/' %}
@@ -41,7 +41,7 @@
       </nav>
 
       <nav class="footer__links" aria-label="خدماتنا">
-        <h4>خدماتنا</h4>
+        <h2>خدماتنا</h2>
         <ul>
           {%- for s in site.data.services %}
           <li><a href="{{ '/services/' | append: s.slug | append: '.html' | relative_url }}">{{ s.name }}</a></li>
@@ -50,7 +50,7 @@
       </nav>
 
       <div class="footer__contact">
-        <h4>بيانات التواصل</h4>
+        <h2>بيانات التواصل</h2>
         <ul>
           <li>
             <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>

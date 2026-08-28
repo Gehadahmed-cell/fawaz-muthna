@@ -92,7 +92,7 @@ layout: default
         <div class="why__item reveal"{% unless forloop.first %} style="--d:{{ forloop.index0 | times: 6 | divided_by: 100.0 }}s"{% endunless %}>
           <svg class="icon" aria-hidden="true"><use href="#{{ w.icon }}"/></svg>
           <div>
-            <h4>{{ w.title }}</h4>
+            <h3>{{ w.title }}</h3>
             <p>{{ w.body }}</p>
           </div>
         </div>

@@ -36,31 +36,41 @@ ul,ol{list-style:none}
    2. رموز التصميم — مستخرجة من الهوية الرسمية للمؤسسة
    ============================================================ */
 :root{
-  --navy-950:#071B33;
-  --navy-900:#0B2545;
-  --navy-800:#123A63;
-  --navy-700:#1B4E82;
+  /* الأزرق والبرتقالي والفيروزي مأخوذة من بكسلات الشعار نفسه
+     (assets/logo.png)، وبقية الدرجات مشتقة منها. كل لون نص هنا
+     مُتحقَّق منه مقابل خلفيته: 4.5:1 للمتن و3:1 للنص الكبير (WCAG AA). */
+  --navy-950:#001B3C;
+  --navy-900:#002858;   /* لون الشعار — 14.54:1 على الأبيض */
+  --navy-800:#0A3E72;
+  --navy-700:#14568F;
 
-  --orange-700:#B85A0C;
-  --orange-600:#D96A15;
-  --orange-500:#F07C22;
-  --orange-400:#F89440;
-  --orange-100:#FDEEE1;
+  --orange-700:#8F4400;
+  --orange-600:#B55700;  /* البرتقالي للنصوص — 4.85:1 أبيض / 4.53:1 على الفاتح */
+  --orange-500:#F87800;  /* لون الشعار — للتعبئة لا للنص على الأبيض */
+  --orange-400:#FF9433;
+  --orange-300:#FFB066;  /* نص على الأزرق داخل الشارات — 5.35:1 */
+  --orange-100:#FFF0E0;
 
-  --teal-600:#15788A;
-  --teal-500:#1B8FA3;
+  --teal-600:#00666D;
+  --teal-500:#008088;   /* لون الشعار — 4.73:1 على الأبيض */
+  --teal-300:#59ACB2;   /* 5.52:1 على الأزرق الداكن */
 
-  --green-500:#1FA855;
-  --green-400:#25C264;
+  --green-600:#0E7A3A;
+  --green-500:#108543;  /* الأبيض عليه 4.71:1 */
+  --green-400:#12924A;
 
-  --ink-900:#0B2545;
-  --ink-700:#2F4459;
-  --ink-500:#5E7289;
-  --ink-300:#93A3B6;
+  --ink-900:#002858;   /* 14.54:1 */
+  --ink-700:#476487;   /* 6.10:1 — متن */
+  --ink-500:#546F8F;   /* 5.19:1 — نص ثانوي */
+  --ink-300:#8093AC;   /* حدود وأيقونات فقط — لا يُستخدم للنص */
+
+  --on-navy:#FFFFFF;      /* 14.54:1 على الأزرق */
+  --on-navy-soft:#C7D0DA; /*  9.32:1 */
+  --on-navy-dim:#A9B6C6;  /*  7.06:1 */
 
   --bg:#FFFFFF;
-  --bg-soft:#F4F7FA;
-  --line:#E3EAF1;
+  --bg-soft:#F6F7F9;
+  --line:#E6EAEE;
   --line-dark:rgba(255,255,255,.14);
 
   --section-y:clamp(3.75rem,8.5vw,6.75rem);
@@ -83,10 +93,10 @@ ul,ol{list-style:none}
   --r-xl:1.9rem;
   --r-pill:999px;
 
-  --shadow-1:0 2px 10px rgba(11,37,69,.06);
-  --shadow-2:0 14px 40px rgba(11,37,69,.12);
-  --shadow-3:0 28px 70px rgba(11,37,69,.22);
-  --shadow-orange:0 10px 26px rgba(240,124,34,.28);
+  --shadow-1:0 2px 10px rgba(0,40,88,.06);
+  --shadow-2:0 14px 40px rgba(0,40,88,.10);
+  --shadow-3:0 28px 70px rgba(0,40,88,.20);
+  --shadow-orange:0 10px 26px rgba(248,120,0,.26);
 
   --header-h:4.75rem;
 }
@@ -94,14 +104,18 @@ ul,ol{list-style:none}
 /* ============================================================
    3. الأساسيات
    ============================================================ */
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 1rem)}
+/* القصّ على html لا على body: overflow على body يُمرَّر إلى نافذة العرض
+   بدل أن يقصّ محتوى body، وفي اتجاه RTL ينتج عنه إزاحة أفقية بمقدار 16px
+   عند 320px. بتحديد overflow على html يتوقف التمرير، فيقصّ body محتواه
+   فعلياً. و clip لا ينشئ حاوية تمرير، فيبقى الهيدر اللاصق يعمل. */
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 1rem);overflow-x:clip}
 body{
   font-family:var(--font);font-size:var(--fs-body);line-height:1.9;
   color:var(--ink-700);background:var(--bg);
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
 }
 body.is-locked{overflow:hidden}
-::selection{background:var(--orange-500);color:#fff}
+::selection{background:var(--orange-500);color:var(--navy-950)}
 
 h1,h2,h3,h4{
   font-family:var(--font-display);
@@ -111,9 +125,9 @@ h1,h2,h3,h4{
 
 /* العناصر التي تحمل نبرة العناوين: الأزرار، الأرقام، الشعار النصي، التنقل */
 .brand__name,.brand__tag,.btn,.nav a,.mobile-nav a,
-.eyebrow,.stat__num,.service__no,.step__no,.filter,
+.eyebrow,.service__no,.step__no,.filter,
 .hero__badge,.hero__ribbon,.pillar span,.showcase__stat,.showcase__caption,
-.faq summary,.footer h4,.field label{
+.faq summary,.footer :is(h2,h4),.field label{
   font-family:var(--font-display);
 }
 p{text-wrap:pretty}
@@ -127,7 +141,7 @@ strong{color:var(--ink-900);font-weight:700}
 
 .skip{
   position:absolute;inset-inline-start:1rem;top:-100px;z-index:200;
-  background:var(--orange-500);color:#fff;font-weight:800;
+  background:var(--orange-500);color:var(--navy-950);font-weight:800;
   padding:.7rem 1.2rem;border-radius:var(--r-sm);transition:top .2s;
 }
 .skip:focus{top:1rem}
@@ -136,16 +150,20 @@ strong{color:var(--ink-900);font-weight:700}
    4. أدوات مشتركة
    ============================================================ */
 .container{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--pad)}
+/* عنوان يقرأه قارئ الشاشة فقط — يحفظ تسلسل العناوين دون أثر بصري */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .section{padding-block:var(--section-y)}
 .section--soft{background:var(--bg-soft)}
-.section--navy{background:var(--navy-900);color:rgba(255,255,255,.78)}
+.section--navy{background:var(--navy-900);color:var(--on-navy-soft)}
 .section--navy h2,.section--navy h3,.section--navy h4{color:#fff}
 
 .eyebrow{
   display:inline-flex;align-items:center;gap:.55rem;
-  color:var(--orange-500);font-size:var(--fs-xs);font-weight:800;
+  color:var(--orange-600);font-size:var(--fs-xs);font-weight:800;
   letter-spacing:.12em;text-transform:uppercase;
 }
+/* على الخلفيات الداكنة يعود البرتقالي الفاتح: 6.03:1 على الأزرق */
+.section--navy .eyebrow,.hero .eyebrow,.svc-hero .eyebrow{color:var(--orange-400)}
 .eyebrow::before{content:"";width:1.75rem;height:3px;background:var(--orange-500);border-radius:3px}
 
 .section-head{max-width:46rem;margin-bottom:clamp(2.5rem,5vw,3.75rem)}
@@ -153,7 +171,7 @@ strong{color:var(--ink-900);font-weight:700}
 .section-head--center .eyebrow::after{content:"";width:1.75rem;height:3px;background:var(--orange-500);border-radius:3px}
 .section-head h2{font-size:var(--fs-h2);font-weight:900;margin-block:.85rem .75rem}
 .section-head p{color:var(--ink-500);font-size:var(--fs-sm)}
-.section--navy .section-head p{color:rgba(255,255,255,.72)}
+.section--navy .section-head p{color:var(--on-navy-soft)}
 
 .icon{width:1.25em;height:1.25em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
@@ -165,16 +183,18 @@ strong{color:var(--ink-900);font-weight:700}
 }
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0)}
-.btn--orange{background:var(--orange-500);color:#fff;box-shadow:var(--shadow-orange)}
-.btn--orange:hover{background:var(--orange-600)}
+/* نص أزرق داكن على البرتقالي (5.32:1). الأبيض عليه 2.74:1 ولا يجتاز AA،
+   فبقي لون الهوية كما هو وتغيّر لون النص بدلاً من تغميق البرتقالي. */
+.btn--orange{background:var(--orange-500);color:var(--navy-950);box-shadow:var(--shadow-orange)}
+.btn--orange:hover{background:var(--orange-400)}
 .btn--navy{background:var(--navy-900);color:#fff}
 .btn--navy:hover{background:var(--navy-800)}
 .btn--outline{border-color:var(--line);color:var(--ink-900);background:#fff}
 .btn--outline:hover{border-color:var(--orange-500);color:var(--orange-600)}
 .btn--outline-light{border-color:rgba(255,255,255,.32);color:#fff}
-.btn--outline-light:hover{border-color:var(--orange-500);background:var(--orange-500)}
-.btn--green{background:var(--green-500);color:#fff;box-shadow:0 10px 26px rgba(31,168,85,.24)}
-.btn--green:hover{background:var(--green-400)}
+.btn--outline-light:hover{border-color:var(--orange-500);background:var(--orange-500);color:var(--navy-950)}
+.btn--green{background:var(--green-500);color:#fff;box-shadow:0 10px 26px rgba(16,133,67,.24)}
+.btn--green:hover{background:var(--green-600)}
 .btn--lg{padding:1.05rem 2rem;font-size:1rem}
 .btn--block{display:flex;width:100%}
 
@@ -198,8 +218,9 @@ strong{color:var(--ink-900);font-weight:700}
 .brand{display:flex;align-items:center;gap:.75rem}
 .brand__mark{width:auto;height:2.55rem;flex:none}
 .brand__name{display:block;color:var(--navy-900);font-weight:900;font-size:1.05rem;line-height:1.25;letter-spacing:-.01em}
-.brand__tag{display:block;color:var(--orange-500);font-weight:700;font-size:.67rem;line-height:1.45}
+.brand__tag{display:block;color:var(--orange-600);font-weight:700;font-size:.67rem;line-height:1.45}
 .brand--light .brand__name{color:#fff}
+.brand--light .brand__tag{color:var(--orange-400)}
 
 /* ============================================================
    6. الشريط العلوي + الهيدر
@@ -254,12 +275,12 @@ strong{color:var(--ink-900);font-weight:700}
 
 .hero__inner{position:relative;z-index:1;display:grid;gap:clamp(2.5rem,5vw,3.5rem);padding-block:clamp(3.25rem,7.5vw,5.5rem)}
 
-.hero__badge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(240,124,34,.14);border:1px solid rgba(240,124,34,.4);color:var(--orange-400);padding:.5rem 1rem;border-radius:var(--r-pill);font-size:var(--fs-xs);font-weight:800}
+.hero__badge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(248,120,0,.16);border:1px solid rgba(248,120,0,.45);color:var(--orange-300);padding:.5rem 1rem;border-radius:var(--r-pill);font-size:var(--fs-xs);font-weight:800}
 .hero h1{color:#fff;font-size:var(--fs-hero);font-weight:900;line-height:1.25;margin-block:1.25rem 1.1rem}
 .hero h1 .accent{color:var(--orange-500)}
 .hero__lead{max-width:38rem;color:rgba(255,255,255,.76)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2rem}
-.hero__ribbon{margin-top:2.25rem;display:inline-flex;align-items:center;gap:.6rem;background:var(--orange-500);color:#fff;font-weight:800;font-size:var(--fs-xs);padding:.65rem 1.25rem;border-radius:var(--r-sm);box-shadow:var(--shadow-orange)}
+.hero__ribbon{margin-top:2.25rem;display:inline-flex;align-items:center;gap:.6rem;background:var(--orange-500);color:var(--navy-950);font-weight:800;font-size:var(--fs-xs);padding:.65rem 1.25rem;border-radius:var(--r-sm);box-shadow:var(--shadow-orange)}
 .hero__ribbon .icon{width:1rem;height:1rem;stroke-width:2.4}
 
 /* عرض الملف التعريفي المطبوع في الهيرو */
@@ -271,7 +292,7 @@ strong{color:var(--ink-900);font-weight:700}
 .showcase__frame img{width:100%;height:auto;display:block}
 .showcase__stat{
   position:absolute;inset-block-end:.25rem;inset-inline-start:1rem;
-  background:var(--orange-500);color:#fff;border-radius:var(--r-md);
+  background:var(--orange-500);color:var(--navy-950);border-radius:var(--r-md);
   padding:.8rem 1.15rem;box-shadow:var(--shadow-orange);
   display:flex;align-items:center;gap:.75rem;
 }
@@ -287,7 +308,7 @@ strong{color:var(--ink-900);font-weight:700}
 /* ============================================================
    8. شريط الركائز
    ============================================================ */
-.pillars{background:var(--orange-500);color:#fff}
+.pillars{background:var(--orange-500);color:var(--navy-950)}
 .pillars__title{display:flex;align-items:center;justify-content:center;gap:.6rem;font-weight:900;font-size:var(--fs-sm);padding-top:1.5rem;text-align:center}
 .pillars__title .icon{width:1rem;height:1rem;stroke-width:2.6}
 .pillars__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.22);margin-top:1.25rem}
@@ -299,10 +320,16 @@ strong{color:var(--ink-900);font-weight:700}
 /* ============================================================
    9. شريط الأرقام
    ============================================================ */
-.stats__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
-.stat{background:#fff;padding:clamp(1.5rem,3vw,2.25rem) 1rem;text-align:center}
-.stat__num{display:flex;align-items:baseline;justify-content:center;gap:.1rem;font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:900;color:var(--orange-500);line-height:1.1}
-.stat__label{margin-top:.35rem;font-size:var(--fs-xs);color:var(--ink-500);font-weight:700}
+/* بطاقات وصفية — لا أرقام. نفس شبكة الأربع بطاقات. */
+.traits__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.trait{background:#fff;padding:clamp(1.5rem,3vw,2.25rem) clamp(1rem,2.2vw,1.5rem);text-align:center}
+.trait__icon{
+  display:grid;place-items:center;width:3rem;height:3rem;margin:0 auto .9rem;
+  border-radius:var(--r-md);background:var(--orange-100);color:var(--orange-600);
+}
+.trait__icon .icon{width:1.5rem;height:1.5rem;stroke-width:1.8}
+.trait h3{font-size:1.02rem;font-weight:800;color:var(--ink-900);line-height:1.5}
+.trait p{margin-top:.3rem;font-size:var(--fs-sm);color:var(--ink-500);line-height:1.75;text-wrap:pretty}
 
 /* ============================================================
    10. من نحن + لماذا تختارنا
@@ -324,11 +351,13 @@ strong{color:var(--ink-900);font-weight:700}
 .mosaic__tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-2)}
 .mosaic__tile:nth-child(2){margin-block-start:clamp(1rem,3vw,2.25rem)}
 .mosaic__tile--navy{background:var(--navy-900);border-color:transparent;color:rgba(255,255,255,.7)}
-.mosaic__tile--navy h4{color:#fff}
-.mosaic__tile--orange{background:var(--orange-500);border-color:transparent;color:rgba(255,255,255,.9);box-shadow:var(--shadow-orange)}
-.mosaic__tile--orange h4{color:#fff}
-.mosaic__tile--orange .icon-badge,.mosaic__tile--navy .icon-badge{background:rgba(255,255,255,.16);color:#fff}
-.mosaic__tile h4{font-size:1.02rem;font-weight:800}
+.mosaic__tile--navy :is(h3,h4){color:#fff}
+/* على البرتقالي يُستخدم الأزرق الداكن: الأبيض عليه 2.48:1 ولا يجتاز AA */
+.mosaic__tile--orange{background:var(--orange-500);border-color:transparent;color:var(--navy-950);box-shadow:var(--shadow-orange)}
+.mosaic__tile--orange :is(h3,h4){color:var(--navy-950)}
+.mosaic__tile--navy .icon-badge{background:rgba(255,255,255,.16);color:#fff}
+.mosaic__tile--orange .icon-badge{background:rgba(0,27,60,.14);color:var(--navy-950)}
+.mosaic__tile :is(h3,h4){font-size:1.02rem;font-weight:800}
 .mosaic__tile small{font-size:var(--fs-xs);display:block;margin-top:.2rem;line-height:1.6}
 .mosaic__tile:not(.mosaic__tile--navy):not(.mosaic__tile--orange) small{color:var(--ink-500)}
 
@@ -336,7 +365,7 @@ strong{color:var(--ink-900);font-weight:700}
 .why__item{display:flex;gap:.9rem;padding:1.35rem;border:1px solid var(--line);border-radius:var(--r-md);background:#fff;transition:border-color .25s,box-shadow .25s,transform .25s}
 .why__item:hover{border-color:var(--orange-500);box-shadow:var(--shadow-2);transform:translateY(-3px)}
 .why__item .icon{width:1.5rem;height:1.5rem;flex:none;color:var(--orange-500);margin-top:.3rem}
-.why__item h4{font-size:.98rem;font-weight:800}
+.why__item :is(h3,h4){font-size:.98rem;font-weight:800}
 .why__item p{font-size:var(--fs-xs);color:var(--ink-500);line-height:1.75;margin-top:.15rem}
 
 /* ============================================================
@@ -395,7 +424,7 @@ strong{color:var(--ink-900);font-weight:700}
 .step__no{
   position:absolute;inset-block-start:-1.1rem;inset-inline-start:1.3rem;
   width:2.4rem;height:2.4rem;border-radius:50%;
-  background:var(--orange-500);color:#fff;display:grid;place-items:center;
+  background:var(--orange-500);color:var(--navy-950);display:grid;place-items:center;
   font-weight:900;font-size:.9rem;box-shadow:var(--shadow-orange);direction:ltr;
 }
 .step .icon-badge{margin-bottom:.9rem}
@@ -449,7 +478,7 @@ strong{color:var(--ink-900);font-weight:700}
 .contact-card{display:flex;gap:.9rem;align-items:flex-start;padding:1.15rem 1.3rem;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);border-radius:var(--r-md);transition:border-color .25s,background .25s}
 .contact-card:hover{border-color:var(--orange-500);background:rgba(255,255,255,.1)}
 .contact-card .icon-badge{width:2.6rem;height:2.6rem;border-radius:.7rem}
-.contact-card h4{font-size:var(--fs-sm);font-weight:800;margin-bottom:.15rem}
+.contact-card :is(h3,h4){font-size:var(--fs-sm);font-weight:800;margin-bottom:.15rem}
 .contact-card p,.contact-card a{display:block;font-size:var(--fs-xs);color:rgba(255,255,255,.68);line-height:1.75}
 .contact-card a:hover{color:var(--orange-400)}
 
@@ -472,7 +501,7 @@ strong{color:var(--ink-900);font-weight:700}
 .field.has-error input,.field.has-error textarea{border-color:#D64545;background:#FDF2F2}
 .field__error{display:none;margin-top:.35rem;font-size:.72rem;color:#C33;font-weight:700}
 .field.has-error .field__error{display:block}
-.form-note{margin-top:1rem;font-size:.72rem;color:var(--ink-300);text-align:center;line-height:1.7}
+.form-note{margin-top:1rem;font-size:.78rem;color:var(--ink-500);text-align:center;line-height:1.7}
 
 .map{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-dark);margin-top:clamp(2.5rem,5vw,3.5rem);background:var(--navy-800)}
 .map iframe{width:100%;height:clamp(16rem,38vw,23rem);border:0}
@@ -482,8 +511,8 @@ strong{color:var(--ink-900);font-weight:700}
    ============================================================ */
 .footer{background:var(--navy-950);color:rgba(255,255,255,.62);padding-block:clamp(3rem,6vw,4.5rem) 0}
 .footer__grid{display:grid;gap:clamp(2rem,4vw,3rem);grid-template-columns:1fr}
-.footer h4{color:#fff;font-size:.95rem;font-weight:800;margin-bottom:1.1rem;position:relative;padding-bottom:.6rem}
-.footer h4::after{content:"";position:absolute;inset-block-end:0;inset-inline-start:0;width:2rem;height:3px;background:var(--orange-500);border-radius:3px}
+.footer :is(h2,h4){color:#fff;font-size:.95rem;font-weight:800;margin-bottom:1.1rem;position:relative;padding-bottom:.6rem}
+.footer :is(h2,h4)::after{content:"";position:absolute;inset-block-end:0;inset-inline-start:0;width:2rem;height:3px;background:var(--orange-500);border-radius:3px}
 .footer p,.footer li,.footer a{font-size:var(--fs-xs);line-height:1.95}
 .footer a:hover{color:var(--orange-400)}
 .footer__about .brand{margin-bottom:1.1rem}
@@ -492,7 +521,7 @@ strong{color:var(--ink-900);font-weight:700}
 .footer__contact .icon{width:1rem;height:1rem;flex:none;margin-top:.45rem;color:var(--orange-500)}
 .socials{display:flex;gap:.6rem;margin-top:1.25rem}
 .socials a{width:2.4rem;height:2.4rem;border-radius:var(--r-sm);display:grid;place-items:center;border:1px solid var(--line-dark);color:rgba(255,255,255,.75);transition:all .22s}
-.socials a:hover{background:var(--orange-500);border-color:transparent;color:#fff}
+.socials a:hover{background:var(--orange-500);border-color:transparent;color:var(--navy-950)}
 .socials .icon{width:1.1rem;height:1.1rem}
 .footer__bottom{margin-top:clamp(2.5rem,5vw,3.5rem);padding-block:1.4rem;border-top:1px solid var(--line-dark);text-align:center;font-size:var(--fs-xs);color:rgba(255,255,255,.5)}
 
@@ -518,7 +547,7 @@ strong{color:var(--ink-900);font-weight:700}
   .pillars__grid{grid-template-columns:repeat(3,1fr)}
 }
 @media (min-width:640px){
-  .stats__grid{grid-template-columns:repeat(4,1fr)}
+  .traits__grid{grid-template-columns:repeat(4,1fr)}
   .contact-cards{grid-template-columns:repeat(2,1fr)}
 }
 @media (min-width:768px){
@@ -570,8 +599,8 @@ strong{color:var(--ink-900);font-weight:700}
 .svc-hero__inner{position:relative;z-index:1;display:grid;gap:clamp(2rem,4.5vw,3rem);padding-block:clamp(2.75rem,6.5vw,4.5rem);align-items:center}
 .svc-hero__no{
   display:inline-flex;align-items:center;gap:.6rem;
-  background:rgba(240,124,34,.14);border:1px solid rgba(240,124,34,.4);
-  color:var(--orange-400);padding:.45rem 1rem;border-radius:var(--r-pill);
+  background:rgba(248,120,0,.16);border:1px solid rgba(248,120,0,.45);
+  color:var(--orange-300);padding:.45rem 1rem;border-radius:var(--r-pill);
   font-size:var(--fs-xs);font-weight:800;font-family:var(--font-display);
 }
 .svc-hero__no b{direction:ltr}
