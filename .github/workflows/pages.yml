@@ -1,0 +1,94 @@
+# نشر الموقع على GitHub Pages بنسخة Jekyll مثبّتة في Gemfile.
+#
+# لماذا هذا الملف موجود:
+# GitHub Pages في وضعه الافتراضي يبني بـ Jekyll 3.10 عبر حزمة github-pages،
+# بينما التطوير والاختبار يجريان على 4.4.1. الفجوة لا تظهر إلا بعد النشر.
+# هنا يُبنى الموقع بنفس النسخة المثبّتة في Gemfile، فما يُختبر هو ما يُنشر.
+#
+# شرط التفعيل: Settings > Pages > Source = GitHub Actions.
+# ما دام المصدر "Deploy from a branch" فلن يعمل هذا الملف وستفشل خطوة النشر.
+
+name: نشر الموقع على GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# نشرة واحدة في كل مرة. لا نلغي نشرة جارية حتى لا يبقى الموقع نصف منشور.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          # نفس نسخة روبي المستخدمة في التطوير
+          ruby-version: '3.3.6'
+          bundler-cache: true
+
+      - name: بناء الموقع
+        run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+
+      - name: التحقق من المخرجات
+        run: |
+          set -euo pipefail
+          # الصفحات السبع التي يجب أن تُنشر. أي نقص يعني رابطاً مكسوراً.
+          expected=(
+            index.html
+            404.html
+            services/construction.html
+            services/logistics.html
+            services/car-rental.html
+            services/maintenance.html
+            services/marketing.html
+            assets/site.css
+            assets/site.js
+            robots.txt
+            sitemap.xml
+          )
+          for f in "${expected[@]}"; do
+            [ -s "_site/$f" ] || { echo "::error::ملف ناقص أو فارغ في المخرجات: $f"; exit 1; }
+          done
+
+          # قوالب Liquid غير مُنفَّذة تعني خطأ في البناء لا يوقفه Jekyll
+          if grep -rlF '{{' _site --include='*.html' | grep -q .; then
+            echo "::error::بقيت قوالب Liquid غير مُنفَّذة في المخرجات:"
+            grep -rlF '{{' _site --include='*.html'
+            exit 1
+          fi
+
+          # لا شيء يبدأ بـ _ أو . يُنشر
+          if find _site -mindepth 1 \( -name '_*' -o -name '.*' \) | grep -q .; then
+            echo "::error::ملفات تبدأ بـ _ أو . وصلت إلى المخرجات:"
+            find _site -mindepth 1 \( -name '_*' -o -name '.*' \)
+            exit 1
+          fi
+
+          echo "المخرجات سليمة: $(find _site -type f | wc -l) ملفاً."
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
