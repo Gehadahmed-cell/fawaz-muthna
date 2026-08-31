@@ -1,0 +1,6 @@
+# مخرجات البناء والاعتماديات المحلية — لا تُودَع
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
