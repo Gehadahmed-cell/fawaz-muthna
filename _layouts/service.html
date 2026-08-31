@@ -40,10 +40,16 @@ layout: default
           </a>
         </div>
       </div>
-      <div class="svc-hero__media reveal" style="--d:.15s">
-        {%- assign dims = site.data.image_sizes | where: "file", s.photo | first %}
-        <img src="{{ s.photo | prepend: '/assets/' | relative_url }}" alt="{{ s.photo_alt }}"
-             width="{{ dims.w }}" height="{{ dims.h }}">
+      {%- comment -%}
+        شارة تصميمية بلا صورة. المصادر المتاحة عرضها 146–428 بكسل، وأي
+        استخدام لها هنا يعني تكبيراً يظهر ضبابياً. الأيقونة والرقم عنصران
+        متجهان يبقيان حادّين على أي دقة شاشة.
+        الصور الصغيرة تُستخدم حيث حجمها الطبيعي يكفي (بطاقات الرئيسية).
+      {%- endcomment -%}
+      <div class="svc-crest reveal" aria-hidden="true" style="--d:.15s">
+        <span class="svc-crest__ring"></span>
+        <svg class="svc-crest__icon"><use href="#{{ s.icon }}"/></svg>
+        <span class="svc-crest__num">{{ s.num }}</span>
       </div>
     </div>
   </section>
